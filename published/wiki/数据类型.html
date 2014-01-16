@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="keeword" />
+    <link rel="stylesheet" href="/res/style.css" type="text/css" />
+    <script type="text/javascript" src="/res/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/res/highlight.pack.js"></script>
+    <script type="text/javascript" src="/res/wiki.js"></script>
+    <title>数据类型</title>
+<!--
+
+-->
+
+
+</head>
+<body>
+    <!-- body -->
+    <div class="xgbody">
+
+<!-- header -->
+<header class="xgheader">
+	<p class="xgname"><a href="/wiki/">Keeword's Wiki'</a></p>
+</header>
+<!-- end header -->
+
+        <!-- content -->
+        <div class="xgcontent">
+
+                        <h1 class="xgtitle">数据类型</h1>
+             <!-- end if(title) -->
+
+            <!-- nav -->
+            <div id="xgtoc">
+                <div id="xgtoc-title">
+                    <small>目录</small>
+                </div>
+                <small>Author: keeword</small>
+
+                                <small>Update: 2014年01月16日20时</small>
+                 <!-- end if(date) -->
+
+                <div id="xgtoc-content">
+                                        <ul>
+                    <li><a href="#概述">概述</a></li>
+                    <li><a href="#布尔类型">布尔类型</a></li>
+                    <li><a href="#列表">列表</a></li>
+                    </ul>
+                     <!-- end if(toc) -->
+                </div>
+                
+            </div> <!-- end nav -->
+
+            <div class="content">
+            <!-- 数据类型 -->
+            <h2 id="概述"><a href="#概述">概述</a></h2>
+            <p>在 Python 中， 每个值都有一种数据类型，但您并不需要声明变量的数据类型。 如果你想让变量存储不同的数据，你不需要删除原有变量就可以直接赋值。</p>
+            <p>用 <code>type()</code> 函数可查询数据类型。同样，还可使用 <code>isinstance()</code> 函数判断某个值或变量是否为给定某个类型。</p>
+            <p>例子：</p>
+            <pre><code>    &gt;&gt;&gt; a = 123
+                &gt;&gt;&gt; type(a)
+                int
+                &gt;&gt;&gt; isinstance(a,int)
+                True</code></pre>
+            <h2 id="布尔类型"><a href="#布尔类型">布尔类型</a></h2>
+            <p>布尔类型或为真或为假。Python 有两个被巧妙地命名为 True 和 False 的常量，可用于对布尔类型的直接赋值。</p>
+            <p><strong>在布尔类型上下文中，您几乎可以使用任何表达式。</strong> ##数值类型 Python 同时支持 Integer［整型］、Floating Point［浮点型］ 和 Complex [复数型] 数值。 无任何类型声明可用于区分；Python 通过是否有 <strong>小数点</strong> 来分辨 int 和 float ，通过是否 <code>(a + bj)</code> 形式分辨 Complex。 ####强制转换 通过调用 <code>float()</code> 函数，可以显示地将 int 强制转换为 float。同样，也可以通过调用 <code>int()</code> 将 float 强制转换为 int 。</p>
+            <p><code>int()</code> 将进行取整，而不是四舍五入。对于负数，<code>int()</code> 函数朝着 0 的方法进行取整。</p>
+            <p>例子：</p>
+            <pre><code>    &gt;&gt;&gt; int(3.14159)
+                3
+                &gt;&gt;&gt; float(5)
+                5.0</code></pre>
+            <h2 id="列表"><a href="#列表">列表</a></h2>
+            <p>列表是元素的有序集合。列表对应 c语言 中的数组，但有所不同，它不用声明大小，并且可以包含不同类型的对象。 ####创建列表 例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_list = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]
+                &gt;&gt;&gt; a_list
+                [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]
+                &gt;&gt;&gt; a_list[0]
+                &#39;a&#39;
+                &gt;&gt;&gt; a_list[-1]
+                &#39;e&#39;</code></pre>
+            <p>非空列表的首元素为 <code>list[0]</code>。若序号为正，表示从前向后数;反之表示从后向前数。 ####列表切片 定义列表后，可通过 <code>list[n:m]</code> 的方法从其中获取第 n（含）个到第 m（不含）个元素作为新列表。</p>
+            <p>例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_list
+                [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]
+                &gt;&gt;&gt; a_list[1:3]
+                [&#39;b&#39;,&#39;c&#39;]
+                &gt;&gt;&gt; a_list[:3]
+                [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]
+                &gt;&gt;&gt; a_list[3:]
+                [&#39;d&#39;,&#39;e&#39;]
+                &gt;&gt;&gt; a_list[1:-1]
+                [&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]
+                &gt;&gt;&gt; a_list[:]
+                [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]</code></pre>
+            <p>若其中一端为空，则表示到该端尽头的元素。 ####增加元素 有四种方法可用于向列表中增加元素。</p>
+            <p>例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_list = [&#39;a&#39;]
+                &gt;&gt;&gt; a_list = a_list + [2,3.0]
+                [&#39;a&#39;,2,3.0]
+                &gt;&gt;&gt; a_list.append(True)
+                [&#39;a&#39;,2,3.0,True]
+                &gt;&gt;&gt; a_list.extend([&#39;four&#39;,&#39;o&#39;])
+                [&#39;a&#39;,2,3.0,True,&#39;four&#39;,&#39;o&#39;]
+                &gt;&gt;&gt; a_list.insert(2,[&#39;six&#39;,6])
+                [&#39;a&#39;,2,[&#39;six&#39;,6],3.0,True,&#39;four&#39;,&#39;o&#39;]</code></pre>
+            <p><code>+</code> 运算符和 <code>append()</code> 函数都是向列表尾部添加<strong>一个</strong>新元素。 <code>extend()</code> 函数只接受<strong>列表</strong>作为参数，它会把参数列表中的每个元素添加到目标列表的尾部。 <code>insert()</code> 函数第一个参数表示插入的位置，不论第二个参数是什么类型，都是作为<strong>一个</strong>元素插入到该位置。 ####检索元素 例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_list = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;a&#39;]
+                &gt;&gt;&gt; &#39;b&#39; in a_list
+                True
+                &gt;&gt;&gt; a_list.count(&#39;a&#39;)
+                2
+                &gt;&gt;&gt; a_list.index(&#39;c&#39;)
+                2</code></pre>
+            <p><code>元素 in list</code> 句式将返回 <code>True</code> 或 <code>False</code> 表示该元素是否存在于列表中。 <code>count()</code> 函数将返回列表中，目标元素的个数。 <code>index()</code> 函数将返回目标元素在列表中<strong>首次</strong>出现的位置。若目标元素不存在，该方法会引发一个例外。 ####删除元素 有3种方法可以从列表中删除元素。</p>
+            <p>例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_list = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;a&#39;]
+                &gt;&gt;&gt; del a_list[1]
+                [&#39;a&#39;,&#39;c&#39;,&#39;d&#39;,&#39;a&#39;]
+                &gt;&gt;&gt; a_list.remoce(&#39;a&#39;)
+                [&#39;c&#39;,&#39;d&#39;,&#39;a&#39;]
+                &gt;&gt;&gt; a_list.pop()
+                &#39;a&#39;</code></pre>
+            <p><code>del</code> 语句将从列表中删除指定位置的元素。 <code>remoce()</code> 函数将删除列表中首次出现的目标元素。 <code>pop()</code> 函数将删除列表最后一个元素，并将之返回。</p>
+            <p>对3种方法，若目标函数不存在，都将引发例外。 ##元组 元组是<strong>元素不可改的列表</strong>。</p>
+            <p>元组没有像 <code>append()</code>、 <code>extend()</code>、 <code>insert()</code>、<code>remove()</code> 和 <code>pop()</code> 这样的方法，所以插入、删除和修改其内的元素。 但元组可以进行<strong>切片</strong>操作。</p>
+            <p>定义：</p>
+            <pre><code>    &gt;&gt;&gt; a_tuple = (&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;)</code></pre>
+            <p>可通过 <code>tuple()</code> 函数将列表变为元组，也可通过 <code>list()</code> 函数将元组变为列表。 ##集合 集合就是一个无序的列表。 ####创建集合 例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_set = {1,2}
+                {1,2}
+                &gt;&gt;&gt; a_list = [&#39;a&#39;,&#39;b&#39;]
+                &gt;&gt;&gt; a_set = set(a_list)
+                {&#39;a&#39;,&#39;b&#39;}</code></pre>
+            <h4 id="修改集合"><a href="#修改集合">修改集合</a></h4>
+            <p>例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_set
+                {1,2,3}
+                &gt;&gt;&gt; a_set.add(4)
+                {1,2,3,4}
+                &gt;&gt;&gt; a_set.update({5,6})
+                {1,2,3,4,5,6}</code></pre>
+            <p><code>add()</code> 方法接受单个可以是任何数据类型的参数，并将该值添加到集合之中。 <code>update()</code> 方法仅接受一个集合作为参数，并将其所有成员添加到初始列表中。 ####删除元素 例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_set = {1,2,3,4,5}
+                &gt;&gt;&gt; a_set.discard(3)
+                {1,2,4,5,}
+                &gt;&gt;&gt; a_set.remove(4)
+                {1,2,5}
+                &gt;&gt;&gt; a_set.clear()
+                {}</code></pre>
+            <p><code>discard()</code> 和 <code>remove()</code> 都接受一个单值作为参数，并从集合中删除该值。 <code>clear()</code> 方法删除集合中所有的值，留下一个空集合。 ####常见集合操作 例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_set = {1,2,3,4,5,6,7,8} 
+                &gt;&gt;&gt; 5 in a_set 
+                True 
+                &gt;&gt;&gt; b_set = {6,7,8,14,15,16,17} 
+                &gt;&gt;&gt; a_set.union(b_set) 
+                {1,2,3,4,5,6,7,8,14,15,16,17} 
+                &gt;&gt;&gt; a_set.intersection(b_set) 
+                {6,7,8} 
+                &gt;&gt;&gt; a_set.difference(b_set) 
+                {1, 2, 3, 4, 5} 
+                &gt;&gt;&gt; a_set.symmetric_difference(b_set) 
+                {1, 2, 3, 4, 5, 14, 15, 16, 17}</code></pre>
+            <p>要检测某值是否是集合的成员，可使用 <code>in</code> 运算符。其工作原理和列表的一样。 <code>union()</code> 方法返回两个集合的<strong>并集</strong>。 <code>intersection()</code> 方法返回两个集合的<strong>交集</strong>。 <code>symmetric_difference()</code> 方法返回所有只在<strong>其中一个集合</strong>中出现的元素。 <code>difference()</code> 方法返回所有在 <code>a_set</code> 出现但未在 <code>b_set</code> 中的元素。 ##字典 字典是<strong>键值对</strong>的无序集合。向字典添加一个键的同时，必须为该键增添一个值。 ####创建字典 例子：</p>
+            <pre><code>    &gt;&gt;&gt; a_dict = {&#39;server&#39;: &#39;db.diveintopython3.org&#39;, &#39;database&#39;: &#39;mysql&#39;}</code></pre>
+            <p>通过将两个字典项指定给 <code>a_dict</code> 变量创建了一个新字典。每个字典项都是一组键值对，整个字典项集合都被大括号包裹在内。 <code>server</code> 为键，其值为 <code>'db.diveintopython3.org'</code> ####修改字典</p>
+            <pre><code>    &gt;&gt;&gt; a_dict
+                {&#39;server&#39;: &#39;db.diveintopython3.org&#39;, &#39;database&#39;: &#39;mysql&#39;}
+                &gt;&gt;&gt; a_dict[&#39;database&#39;] = &#39;blog&#39; 
+                &gt;&gt;&gt; a_dict[&#39;database&#39;]
+                &#39;blog&#39;
+                &gt;&gt;&gt; a_dict[&#39;user&#39;] = &#39;user&#39;
+                {&#39;server&#39;: &#39;db.diveintopython3.org&#39;,&#39;database&#39;: &#39;mysql&#39;,&#39;user&#39;: &#39;user&#39;}</code></pre>
+            <p>可随时添加新的键值对。该语法与修改现有值相同。 ##None <code>None</code> 是 Python 的一个特殊常量。它是一个空值。<code>None</code> 与 <code>False</code> 不同。<code>None</code> 不是 0 。<code>None</code> 不是空字符串。 将 <code>None</code> 与任何非 <code>None</code> 的东西进行比较将总是返回 <code>False</code> 。 None 是唯一的空值。它有着自己的数据类型（<code>NoneType</code>）。 可将 <code>None</code> 赋值给任何变量，但不能创建其它 <code>NoneType</code> 对象。所有值为 <code>None</code> 变量是相等的。</p>
+            </div>
+            
+        </div> <!-- end content -->
+    </div> <!-- end body-->
+</body>
+</html>

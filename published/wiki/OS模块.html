@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="keeword" />
+    <link rel="stylesheet" href="/res/style.css" type="text/css" />
+    <script type="text/javascript" src="/res/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/res/highlight.pack.js"></script>
+    <script type="text/javascript" src="/res/wiki.js"></script>
+    <title>OS模块</title>
+<!--
+
+-->
+
+
+</head>
+<body>
+    <!-- body -->
+    <div class="xgbody">
+
+<!-- header -->
+<header class="xgheader">
+	<p class="xgname"><a href="/wiki/">Keeword's Wiki'</a></p>
+</header>
+<!-- end header -->
+
+        <!-- content -->
+        <div class="xgcontent">
+
+                        <h1 class="xgtitle">OS模块</h1>
+             <!-- end if(title) -->
+
+            <!-- nav -->
+            <div id="xgtoc">
+                <div id="xgtoc-title">
+                    <small>目录</small>
+                </div>
+                <small>Author: keeword</small>
+
+                                <small>Update: 2014年01月16日20时</small>
+                 <!-- end if(date) -->
+
+                <div id="xgtoc-content">
+                                        <ul>
+                    <li><a href="#函数">函数</a></li>
+                    </ul>
+                     <!-- end if(toc) -->
+                </div>
+                
+            </div> <!-- end nav -->
+
+            <div class="content">
+            <!-- OS模块 -->
+            <p>这个模块包含普遍的操作系统功能 。如果你希望你的程序能够与平台无关的话，这个模块是尤为重要的。 即它允许一个程序在编写后不需要任何改动，也不会发生任何问题，就可以在Linux和Windows下运行。 ##变量 <code>os.name</code> 字符串指示你正在使用的平台。比如对于Windows，它是 <code>'nt'</code> ，而对于Linux/Unix用户，它是 <code>'posix'</code> 。</p>
+            <pre><code>    &gt;&gt;&gt; os.name
+                &#39;posix&#39;</code></pre>
+            <p><code>os.sep</code> 可以取代操作系统特定的路径分割符。在Linux、Unix下它是 <code>'/'</code> ，在Windows下它是 <code>'\\'</code> ，而在Mac OS下它是 <code>':'</code>。</p>
+            <pre><code>     &gt;&gt;&gt; os.sep
+                 &#39;/&#39;</code></pre>
+            <p><code>os.linesep</code> 给出当前平台使用的行终止符。例如，Windows使用 <code>'\r\n'</code> ，Linux使用<code>'\n'</code> ，而Mac使用 <code>'\r'</code>。</p>
+            <pre><code>    &gt;&gt;&gt; os.linesep
+                &#39;\n&#39;</code></pre>
+            <p><code>os.devnull</code> is the file path of the null device .</p>
+            <pre><code>    &gt;&gt;&gt; os.device
+                &#39;/dev/null&#39;</code></pre>
+            <h2 id="函数"><a href="#函数">函数</a></h2>
+            <p><code>os.getlogin()</code> 返回当前系统的登陆用户。</p>
+            <pre><code>    &gt;&gt;&gt; os.getlogin()
+                &#39;root&#39;</code></pre>
+            <p><code>os.listdir()</code> 返回指定目录下的所有文件和目录名。</p>
+            <pre><code>    &gt;&gt;&gt; os.listdir(&#39;.&#39;)
+                [&#39;njit&#39;,&#39;vimrc&#39;]</code></pre>
+            <p><code>getenv()</code> Get an environment variable, return None if it doesn't exist. The optional second argument can specify an alternate default. key, default and the result are str.'</p>
+            <p><code>os.mkdir()</code> 创建单个目录。 <code>os.makedirs()</code> 创建多级目录。</p>
+            <p><code>os.rmdir()</code> 删除单个目录。 <code>os.removedirs()</code> 删除多级目录。</p>
+            <p><code>os.remove()</code> 删除文件。</p>
+            <p><code>os.chdir()</code> 切换目录。</p>
+            <p><code>os.getcwd()</code> 返回当前Python脚本工作的目录路径。</p>
+            <p><code>os.system()</code> 运行Linux型系统命令。</p>
+            <pre><code>    &gt;&gt;&gt; os.system(&#39;sudo df -h&#39;)
+                [sudo] password for neng: 
+                文件系统        容量  已用  可用 已用% 挂载点
+                /dev/sda10       19G  6.6G   11G   38% /
+                /dev/sda8       9.1G  2.6G  6.0G   30% /home
+                /dev/sda6        35G   19G   17G   52% /media/DOCUMENT
+                0</code></pre>
+            <p><code>os.walk()</code> 目录遍历，该函数返回一个元组，该元组有3个元素，分别表示每次遍历的路径名，目录列表和文件列表。</p>
+            <pre><code>    &gt;&gt;&gt; for i in os.walk(&#39;/home/neng/workspace/Python/&#39;):
+                ... print(i)
+                ....
+                (&#39;/home/neng/workspace/Python/&#39;, [], [&#39;思想.html&#39;, &#39;han.my.css&#39;, &#39;.OS模块.mkd.swp&#39;, &#39;数据类型.mkd&#39;, &#39;数据类型.html&#39;, &#39;md2html.py&#39;, &#39;思想.mkd&#39;, &#39;Python.xmind&#39;])</code></pre>
+            <p><code>execl(file, *args)</code> Execute the executable file with argument list args, replacing the current process. 关于执行的函数还有很多，详见手册。</p>
+            <p><code>renames(old, new)</code> create directories as necessary and delete any left empty. this function can fail with the new directory structure made if you lack permissions needed to unlink the leaf directory or file.</p>
+            <p><a href="http://www.it165.net/pro/html/201307/6362.html">Python学习笔记四（Python OS模块）</a></p>
+            </div>
+            
+        </div> <!-- end content -->
+    </div> <!-- end body-->
+</body>
+</html>

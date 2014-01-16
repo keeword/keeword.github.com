@@ -1,0 +1,240 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #fbf3ca;
+    color: #555555;
+    font-family: "文泉微米黑", "微软雅黑","Monaco", "CosmicSansNeueMono", "宋体";
+}
+
+pre code{
+    font-family: "CosmicSansNeueMono", "Monaco";
+}
+
+blockquote{
+    border-radius: 2px;
+    border: 1px solid #aaa;
+    background: #eee;
+    color: black;
+    padding-left: 0;
+    border-left: 3px solid #555;
+    box-shadow: -1px 1px 4px -1px rgba(0,0,0,.5) inset;
+}
+
+blockquote p{
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+a{
+    color: #2a9fd6;
+    text-decoration: none;
+    transition: color .3s linear;
+    -moz-transition: all .3s linear;
+    -webkit-transition: color .3s linear;
+    -o-transition: color .3s linear;
+}
+
+a:after{
+    content: ' §';
+}
+
+a:hover{
+    color: #f80;
+    text-decoration: underline;
+}
+
+em{
+    font-weight: bold;
+}
+
+h1{
+    font-size: 1.5em;
+}
+
+h2{
+    font-size: 1.4em;
+}
+
+h3{
+    font-size: 1.3em;
+}
+
+h4{
+    font-size: 1.2em;
+}
+
+h5{
+    font-size: 1.1em;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a{
+    text-decoration: none;
+    color: #555;
+    text-shadow: 1px 1px 1px rgba(111,111,111,0.5);
+}
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover{
+    text-decoration: none;
+}
+
+h1 a:after,
+h2 a:after,
+h3 a:after,
+h4 a:after,
+h5 a:after{
+    content: '⚡';
+}
+
+img{
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+    margin: 1em auto;
+}
+
+p{
+    text-indent: 2em;
+}
+
+li p{
+    text-indent: 0;
+}
+
+code{
+    background: #fff;
+    border-radius: 2px;
+    padding: 0 3px;
+    color: #ff2745;
+    box-shadow: 0 0 1px 1px rgba(200,200,200,.4);
+}
+
+table{
+    border: 1px solid #ccc;
+    border-spacing: 0;
+    box-shadow: 0 2px 7px -1px black inset;
+}
+
+table th{
+    background: black;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 1px gray;
+    border-right: 1px solid gray;
+}
+
+table th:last-child{
+    border: none;
+}
+
+table td{
+    background: white;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 4px 8px;
+    transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+}
+
+table td:hover{
+    background: #888;
+    color: #eee;
+}
+
+footer{
+    margin-top: 2em;
+    text-align: center;
+}
+
+.xgbody{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.xgname{
+    font-family: "方正隶书_GBK";
+    font-size: 2em;
+    color: #d44693;
+    text-align: center;
+    text-indent: 0;
+    padding: 0;
+    transition: color .3s linear;
+    -moz-transition: color .3s linear;
+    -webkit-transition: color .3s linear;
+    -o-transition: color .3s linear;
+}
+
+.xgname a{
+    color: #d44693;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 black;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.xgname a:hover{
+    color: #2a9fd6;
+    font-weight: bold;
+}
+
+.xgname a:before,
+.xgname a:after{
+    content: "♂";
+}
+
+.xgcontent{
+    border: 1px solid black;
+    padding: 0;
+}
+
+.xgtitle{
+    background: black;
+    color: #fbf3ca;
+    margin: 0;
+    padding: 3px 10px;
+    text-shadow: 1px 1px 2px rgba(200,200,200,.9);
+}
+
+#xgtoc{
+    margin: 20px 20px;;
+    padding: 0;
+    border-radius: 3px;
+    border: 1px solid gray;
+    border-top: none;
+    width: auto;
+    background: #f1ecd0;
+}
+
+#xgtoc-title{
+    background: black;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px 2px 2px rgba(0,0,0,.3);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+#xgtoc-content{
+    display: none;
+}
+
+.content{
+    padding: 3px 20px;
+}
+
+.figure{
+    margin: .2em auto;
+    text-align: center;
+}
+
+.caption{
+    margin: 0 auto;
+}
