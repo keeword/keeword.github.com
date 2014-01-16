@@ -8,7 +8,7 @@ all:$(HTML)
 %.html:%.md res/header.html res/footer.html makefile res/pandoctpl.html res/md2html.sh
 	@echo "Making $@"
 	@res/md2html.sh $< $@ 
-	@mv -f $@ ../published/wiki/
+	@cp -f $@ ../published/wiki/
 
 # 伪目标
 %PHONY:clean
