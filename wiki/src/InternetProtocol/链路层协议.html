@@ -4,60 +4,60 @@
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta name="generator" content="pandoc" />
     <meta name="author" content="keeword" />
-    <link rel="stylesheet" href="/wiki/res/style.css" type="text/css" />
-    <script type="text/javascript" src="/wiki/res/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="/wiki/res/highlight.pack.js"></script>
-    <script type="text/javascript" src="/wiki/res/wiki.js"></script>
+    <link rel="stylesheet" href="/stylesheets/wiki.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/styles/monokai_sublime.css" type="text/css" />
+    <script type="text/javascript" src="/javascripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/highlight.pack.js"></script>
+    <script type="text/javascript" src="/javascripts/wiki.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <title>链路层协议</title>
-<!--
 
--->
-
-
+    
 </head>
 <body>
-    <!-- body -->
-    <div class="xgbody">
+<!-- body -->
+<div class="xgbody">
 
-<!-- header -->
-<header class="xgheader">
-	<p class="xgname"><a href="/wiki/">Keeword's Wiki'</a></p>
-</header>
-<!-- end header -->
+    <!-- header -->
+    <header class="xgheader">
+        <p class="xgname"><a href="/wiki/">Keeword's Wiki'</a></p>
+    </header><!-- end header -->
 
-        <!-- content -->
-        <div class="xgcontent">
+    <!-- content -->
+    <div class="xgcontent">
 
-                        <h1 class="xgtitle">链路层协议</h1>
-             <!-- end if(title) -->
+                <h1 class="xgtitle">链路层协议</h1>
+         <!-- end if(title) -->
 
-            <!-- nav -->
-            <div id="xgtoc">
-                <div id="xgtoc-title">
-                    <small>目录</small>
-                </div>
-                <small>Author: keeword</small>
-
-                                <small>Update: 2014年01月16日20时</small>
-                 <!-- end if(date) -->
-
-                <div id="xgtoc-content">
-                                        <ul>
-                    <li><a href="#以太网-ethernetrfc894">以太网 Ethernet(RFC894)</a></li>
-                    </ul>
-                     <!-- end if(toc) -->
-                </div>
-                
-            </div> <!-- end nav -->
-
-            <div class="content">
-            <!-- 链路层协议 -->
-            <h2 id="以太网-ethernetrfc894"><a href="#以太网-ethernetrfc894">以太网 Ethernet(RFC894)</a></h2>
-            <p>以太网封装：<br /> |--目的MAC地址(6字节)--|--来源MAC地址(6字节)--|--上层协议类型(2字节)--|--数据(46 ~ 1500字节)--| ##IEEE 802.2 Ethernet</p>
-            <pre><code>|--目的MAC地址(6字节)--|--来源MAC地址(6自己)--|--后续数据长度(2字节)--|</code></pre>
+        <!-- nav -->
+        <div id="xgtoc">
+            <div id="xgtoc-title">
+                <small>目录</small>
             </div>
-            
-        </div> <!-- end content -->
-    </div> <!-- end body-->
+            <small>Author: keeword</small>
+
+                        <small>Update: 2014年01月17日13时</small>
+             <!-- end if(date) -->
+
+            <div id="xgtoc-content">
+                                <ul>
+                <li><a href="#以太网-ethernetrfc894">以太网 Ethernet(RFC894)</a></li>
+                </ul>
+                 <!-- end if(toc) -->
+            </div>
+        </div> <!-- end nav -->
+
+        <div class="content">
+        <!-- 链路层协议 -->
+        <h2 id="以太网-ethernetrfc894"><a href="#以太网-ethernetrfc894">以太网 Ethernet(RFC894)</a></h2>
+        <p>以太网封装：<br /> |--目的MAC地址(6字节)--|--来源MAC地址(6字节)--|--上层协议类型(2字节)--|--数据(46 ~ 1500字节)--| ##IEEE 802.2 Ethernet</p>
+        <pre><code>|--目的MAC地址(6字节)--|--来源MAC地址(6自己)--|--后续数据长度(2字节)--|</code></pre>
+        </div>
+
+        
+    </div> <!-- end content -->
+</div> <!-- end body-->
 </body>
 </html>
