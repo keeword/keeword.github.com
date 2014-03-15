@@ -12,27 +12,24 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
-    $if(title)$<title>$title$</title>$endif$
+    <title>###操作系统</title>
 
-    $for(header-includes)$
-    $header-includes$
-    $endfor$
-
+    
 </head>
 <body>
 <!-- body -->
 <div class="xgbody">
 
-$for(include-before)$
-$include-before$
-$endfor$
+    <!-- header -->
+    <header class="xgheader">
+        <p class="xgname"><a href="/wiki/">Keeword's Wiki'</a></p>
+    </header><!-- end header -->
 
     <!-- content -->
     <div class="xgcontent">
 
-        $if(title)$
-        <h1 class="xgtitle">$title$</h1>
-        $endif$ <!-- end if(title) -->
+                <h1 class="xgtitle">###操作系统</h1>
+         <!-- end if(title) -->
 
         <!-- nav -->
         <div id="xgtoc">
@@ -41,25 +38,19 @@ $endfor$
             </div>
             <small>Author: keeword</small>
 
-            $if(date)$
-            <small>Update: $date$</small>
-            $endif$ <!-- end if(date) -->
+                        <small>Update: 2014年03月14日22时</small>
+             <!-- end if(date) -->
 
             <div id="xgtoc-content">
-                $if(toc)$
-                $toc$
-                $endif$ <!-- end if(toc) -->
+                 <!-- end if(toc) -->
             </div>
         </div> <!-- end nav -->
 
         <div class="content">
-        $body$
+        
         </div>
 
-        $for(include-after)$
-        $include-after$
-        $endfor$
-
+        
     </div> <!-- end content -->
 </div> <!-- end body-->
 </body>

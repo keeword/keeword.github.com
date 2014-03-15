@@ -12,27 +12,24 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
-    $if(title)$<title>$title$</title>$endif$
+    <title>###数学分析</title>
 
-    $for(header-includes)$
-    $header-includes$
-    $endfor$
-
+    
 </head>
 <body>
 <!-- body -->
 <div class="xgbody">
 
-$for(include-before)$
-$include-before$
-$endfor$
+    <!-- header -->
+    <header class="xgheader">
+        <p class="xgname"><a href="/wiki/">Keeword's Wiki'</a></p>
+    </header><!-- end header -->
 
     <!-- content -->
     <div class="xgcontent">
 
-        $if(title)$
-        <h1 class="xgtitle">$title$</h1>
-        $endif$ <!-- end if(title) -->
+                <h1 class="xgtitle">###数学分析</h1>
+         <!-- end if(title) -->
 
         <!-- nav -->
         <div id="xgtoc">
@@ -41,25 +38,21 @@ $endfor$
             </div>
             <small>Author: keeword</small>
 
-            $if(date)$
-            <small>Update: $date$</small>
-            $endif$ <!-- end if(date) -->
+                        <small>Update: 2014年03月14日22时</small>
+             <!-- end if(date) -->
 
             <div id="xgtoc-content">
-                $if(toc)$
-                $toc$
-                $endif$ <!-- end if(toc) -->
+                 <!-- end if(toc) -->
             </div>
         </div> <!-- end nav -->
 
         <div class="content">
-        $body$
+        
+        <p><strong>数学分析</strong>（mathematical analysis）又称 <strong>高级微积分</strong>（advanced calculus）， 是分析学中最古老、最基本的分支，一般指以 [<a href="./[微积分学.html">微积分学</a> 和 [无穷级数]] 一般理论为主要内容， 并包括它们的理论基础（ [<a href="./[实数.html">实数</a> 、 <a href="./实数.html">函数</a> 、 [函数.html) 、 [函数.html) 、 [函数.html) 、 [函数.html) 、 [函数.html) 、 [函数.html) 、 [函数.html) 和 [极限]] 的基本理论）的一个较为完整的数学学科。 它也是大学数学专业的一门基础课程。[^1]</p>
+        <p>[^1](http://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90)</p>
         </div>
 
-        $for(include-after)$
-        $include-after$
-        $endfor$
-
+        
     </div> <!-- end content -->
 </div> <!-- end body-->
 </body>
