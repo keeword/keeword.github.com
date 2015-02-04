@@ -1,0 +1,67 @@
+# SITE CONFIGURATION
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://keeword.com" # the base hostname & protocol for your site
+
+
+# THEME-SPECIFIC CONFIGURATION
+theme:
+  # Meta
+  title: Keeword's Blog
+  avatar: 
+  gravatar: # email md5 hash
+  description: "我的技术博客"
+  
+  # Header and footer text
+  header_text: >
+     <p>天行健，君子以自强不息。</p>
+     
+  footer_text: >
+   Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type/">Type Theme</a>
+  
+  # Icons
+  rss: true
+  email_address: xieweineng@gmail.com
+  behance:
+  bitbucket: 
+  dribbble: 
+  facebook: 
+  flickr: 
+  github: "keeword"
+  google_plus: 
+  instagram: 
+  linkedin:  # full URL
+  pinterest: 
+  reddit: 
+  soundcloud: 
+  stack_exchange:  # full URL
+  steam: 
+  tumblr: 
+  twitter: "keeword_xie"
+  wordpress: 
+  youtube: 
+  
+  # Scripts
+  google_analytics: # tracking id, e.g. "UA-000000-01"
+  disqus_shortname:
+  
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next: "<<"
+  str_prev: ">>"
+  str_continue_reading: "继续阅读"
+  
+  # Colors, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+
+# PAGINATION
+paginate: 5
+paginate_path: "blog/page:num"
+
+# BUILD SETTINGS
+markdown: kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: :compressed
