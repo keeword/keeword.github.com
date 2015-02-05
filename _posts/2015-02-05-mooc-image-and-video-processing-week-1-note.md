@@ -1,6 +1,6 @@
 ---
 layout: post
-title: mooc: 图像视频处理 week 1 笔记
+title: mooc：图像视频处理 week 1 笔记
 category: mooc
 tags: [mooc, 图像处理]
 ---
