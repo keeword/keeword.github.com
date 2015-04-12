@@ -47,7 +47,7 @@ Vedio 1 主要讲了图像压缩的原理.
 
 $$
 \begin{bmatrix}
-y \\
+Y \\
 Cb \\
 Cr
 \end{bmatrix}=
