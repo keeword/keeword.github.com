@@ -247,17 +247,15 @@ CPU 将锁住总线，其它的 CPU 不能在该指令完成前访问内存。
 
 具体的方案如下所示：
 
-```asm
-enter_region:
-    TSL REGISTER, LOCK      -- 复制锁到寄存器，并把锁置 1
-    CMP REGISTER, #0        -- 比较锁是否为 0
-    JNE enter_region        -- 若不是 0，说明以上锁，循环检测
-    RET                     -- 返回，进入临界区
-
-leave_region:
-    MOVE LOCK, #0           -- 已退出临界区，把锁置 0
-    RET                     -- 返回
-```
+    enter_region:
+        TSL REGISTER, LOCK      -- 复制锁到寄存器，并把锁置 1
+        CMP REGISTER, #0        -- 比较锁是否为 0
+        JNE enter_region        -- 若不是 0，说明以上锁，循环检测
+        RET                     -- 返回，进入临界区
+    
+    leave_region:
+        MOVE LOCK, #0           -- 已退出临界区，把锁置 0
+        RET                     -- 返回
 
 各进程只须在进入临界区前执行 `enter_region` ，退出临界区后调用 `leave_region` ，
 就可以避免竞争冒险出现。
