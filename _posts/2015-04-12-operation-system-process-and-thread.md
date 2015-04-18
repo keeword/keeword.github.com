@@ -166,33 +166,31 @@ tags: [os, process, thread]
 
 这种方案如下面的代码所示。
 
-```c
-#define TRUE  1
-#define A   0
-#define B   1
-
-int turn = A;
-
-/* 进程A的代码 */
-while(TRUE) {
-    while(turn != A);       // 检测是否轮到自己
-
-    critical_region();      // 进入临界区
-    turn = B;               // 把锁交给其它进程
-
-    noncritical_region();   // 进入非临界区
-}
-
-/* 进程B的代码 */
-while(TRUE) {
-    while(turn != B);
-
-    critical_region();
-    turn = A;
-
-    noncritical_region();
-}
-```
+    #define TRUE  1
+    #define A   0
+    #define B   1
+    
+    int turn = A;
+    
+    /* 进程A的代码 */
+    while(TRUE) {
+        while(turn != A);       // 检测是否轮到自己
+    
+        critical_region();      // 进入临界区
+        turn = B;               // 把锁交给其它进程
+    
+        noncritical_region();   // 进入非临界区
+    }
+    
+    /* 进程B的代码 */
+    while(TRUE) {
+        while(turn != B);
+    
+        critical_region();
+        turn = A;
+    
+        noncritical_region();
+    }
 
 每个进程都在进入临界区前都检查锁是否在自己手上，不在的话就不断循环，
 直到另一进程把锁交给自己，然后进入临界区。离开临界区后又立即把锁交给其它进程。
@@ -205,27 +203,25 @@ One-by-One 的进入临界区，不能出现 *...A-B-B-A...* 这种情况。
 
 1981 年，G.L.Peterson 发现了一种简单的互斥算法，用于解决两个进程间的竞争冒险问题。
 
-```c
-#define TRUE  1
-#define FALSE 0
-#define N     2
-
-int turn;
-int interested[N];
-
-void enter_region(int process)
-{
-    int other = 1 - process;
-    interested[process] = TRUE;
-    turn = process;
-    while (turn == process && interested[other] == TRUE);
-}
-
-void leave_region(int process)
-{
-    interested[process] = FALSE;
-}
-```
+    #define TRUE  1
+    #define FALSE 0
+    #define N     2
+    
+    int turn;
+    int interested[N];
+    
+    void enter_region(int process)
+    {
+        int other = 1 - process;
+        interested[process] = TRUE;
+        turn = process;
+        while (turn == process && interested[other] == TRUE);
+    }
+    
+    void leave_region(int process)
+    {
+        interested[process] = FALSE;
+    }
 
 当只有一个进程申请资源时，没有其它进程感兴趣，自然就能得到。
 当两个进程竞争时，后来者把自己的进程号存入 `turn`  ，并覆盖前者，
@@ -237,9 +233,7 @@ Peterson 算法也可以扩展到多个进程间的竞争。
 
 这是一种硬件解决方案。在许多计算机中，有这样一条指令
 
-```asm
-TSL RX, LOCK
-```
+`TSL RX, LOCK`
 
 称作 *测试并加锁(TEST AND SET LOCK)* ，它把内存中一个 *字* LOCK 读到 RX 中，
 并在 LOCK 对应的地址上写入一个非零数。这是一个原子操作，当该指令执行时，
