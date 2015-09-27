@@ -56,6 +56,6 @@ intel 80286 把 8086 所使用的方法称为实模式(real mode) ，而另外�
 ![段选择器格式](/img/format_of_the_segment_selector_component.png)
 
 其中， RPL(request privelege level) 是为了权限管理而设计的标志位，去掉这两位后，
-还剩下 30 位，故程序能够访问的最大空间为 $2^30 = 1G$ 。
+还剩下 30 位，故程序能够访问的最大空间为 $$2^30 = 1G$$ 。
 
 
