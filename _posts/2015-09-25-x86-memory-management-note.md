@@ -1,11 +1,9 @@
 ---
 layout: post
-title: x86-memory-management-note
+title: x86 内存管理机制发展
 category: 
 tags: [x86, memory management]
 ---
-
-# x86 内存管理机制发展
 
 本文主要讲述 x86 体系从 8086 到 80386 的内存管理机制。
 
@@ -55,7 +53,7 @@ intel 80286 把 8086 所使用的方法称为实模式(real mode) ，而另外�
 形成一个 32 位的虚拟地址指针，同时， `selector` 的格式也与实模式中的不同，
 实模式中， `selector` 是物理地址的高位部分，保护模式中的 `selector` 格式如下图所示。
 
-![段选择器格式](../img/format_of_the_segment_selector_component.png)
+![段选择器格式](/img/format_of_the_segment_selector_component.png)
 
 其中， RPL(request privelege level) 是为了权限管理而设计的标志位，去掉这两位后，
 还剩下 30 位，故程序能够访问的最大空间为 $2^30 = 1G$ 。
