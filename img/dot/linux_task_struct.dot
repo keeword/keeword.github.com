@@ -1,0 +1,57 @@
+digraph task{
+
+fontname = "Input Mono";
+fontsize = 10;
+rankdir  = LR;
+
+node [fontname = "Input Mono", fontsize = 10, color="skyblue", shape="plaintext"];
+edge [fontname = "Input Mono", fontsize = 10, color="crimson", style="solid"];
+
+task_struct [label=<
+        <table border="0" cellborder="1" cellspacing="0" align="left">
+        <tr>
+        <td>volatile long state</td>
+        </tr>
+        <tr>
+        <td>void *stack</td>
+        </tr>
+        <tr>
+        <td>atomic_t usage</td>
+        </tr>
+        <tr>
+        <td>unsigned int flags</td>
+        </tr>
+        <tr>
+        <td>unsigned int ptrace</td>
+        </tr>
+        <tr>
+        <td port="fs_struct">struct fs_struct *fs</td>
+        </tr>
+        </table>
+>];
+
+fs_struct [label=<
+        <table border="0" cellborder="1" cellspacing="0" align="left">
+        <tr>
+        <td port="entry">int user</td>
+        </tr>
+        <tr>
+        <td>spinlock_t lock</td>
+        </tr>
+        <tr>
+        <td>seqcount_t seq</td>
+        </tr>
+        <tr>
+        <td>int umask</td>
+        </tr>
+        <tr>
+        <td>int in_exec</td>
+        </tr>
+        <tr>
+        <td>struct path root, pwd</td>
+        </tr>
+        </table>
+>];
+
+task_struct:fs_struct -> fs_struct:entry;
+}
