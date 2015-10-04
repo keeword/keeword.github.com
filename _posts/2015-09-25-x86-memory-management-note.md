@@ -50,7 +50,7 @@ $physicalsadrress = selector \times 16 + offset$ 。
 ，而另外创造的方式称为保护模式(protected mode)。
 通常，80286 启动时处于实模式，然后通过指令转移到保护模式。 80286 的实模式是为了向下兼容的一种举措。
 
-### Virtual Addresses
+### 寻址
 
 80286 把外部地址总线增加到 24 位，能够寻址 $2^{24} = 16M$ 大小的内存。
 
@@ -80,7 +80,11 @@ descriptor 分为很多种类，其中用于段寻址的有 *Code Segment Descri
 
 ![代码或数据段描述符](/img/code_or_data_segment_descriptor.png)
 
-由图中可见，除了基址和大小外，每个 descriptor 还有很多属性，这些属性将在下文讲述。
+另外还有一些实现系统的 descriptor：
+
+![系统描述符](/img/system_segment_descriptor_and_gate_descriptor.png)
+
+从图中可见，除了基址和大小外，每个 descriptor 还有很多属性，这些属性将在下文讲述。
 图中 base 为 24 位，与外部地址总线位数一致，limit 为 16 位，每段的大小由该值决定，
 即每段是不定大小的，但最大值与 8086 一样，都是 64K 。
 
@@ -111,10 +115,103 @@ GDT 在所有任务中共享，而 LDT 只由一个任务拥有或由一组相�
 
 在访问过程中， CPU 是根据 selector 低 3 位中的 *TI* 字段判断应该从 GDT 还是 LDT 获取 descriptor 。
 
+### 权限
+
+80286 有 3 类权限： *CPL(Current Privilege Level)* 、 *DLP(Descriptor Privilege Level)* 、
+*RPL(Request Privilege Level)* 。所有权限都分为 0~3 级，值越小，权限越高。
+
+#### CPL
+
+CPL 表示当前任务的运行权限，保存在 cs 和 ss 寄存器的最低两位。
+
+在所有指令中，有一部分是需要一定特权才能执行的，称之为系统指令。其中
+*LGDT* 、 *LIDT* 、 *LLDT* 、 *LTR* 、 *LMSW* 、 *CLTS* 、 *POPF* 、 *HALF* 
+指令需要有 **CPL = 0** 才能执行，称为特权指令。
+另外， *FLAGS* 寄存器中有一个叫 *IOPL(I/O Privilege Level)* 的位，用于控制 I/O 权限。 
+*IN* 、 *OUT* 、 *INW* 、 *OUTW* 、 *INSB* 、 *OUTSB* 、 *INSW* 、 *OUTSW* 、 *STI* 、 *CLI* 
+等指令需要 **CPL <= IOPL** 才能执行，称为信任指令。
+通常把 *IOPL* 设为 0 ，这样就只有操作系统能执行 I/O 操作了。
+
+#### DPL
+
+每个 Descriptor 中都有两位来指明该 Descriptor 的权限，
+用来检查任务是否能够访问 Descriptor 。
+
+#### RPL
+
+```asm
+mov     ax, ds:si
+mov     ax, es:si
+jmp     cs:bp
+```
+
+在上述指令中， selector 的最后两位就是 RPL 了。
+
+为什么要有RPL？
+操作系统往往通过设置 RPL 的方法来避免低权限任务访问高权限任务的数据。
+例子情景：低权限任务调用操作系统的某过程去访问一个段。
+当低权限的任务调用操作系统的功能来访问一个目标段时，
+进入操作系统代码段时 CPL = 0 ，如果没有RPL，
+那么权限检查的时候就会用 CPL ，也就可以去访问高权限任务的数据，不安全了。
+所以引入RPL，让它去代表访问权限，因此在检查 CPL 的同时，也会检查 RPL 。
+
+### 数据保护
+
+80286 对内存提供了 3 方面的保护：
+
++ 隔离系统软件和用户软件
+
++ 隔离不同的用户程序
+
++ 数据类型检测
+
+对数据的访问可以分为两部分： 加载 selector ，访问内存
+
+#### 加载 selector
+
+![任务所用的段类型](/img/segment_of_task.png)
+
+系统中任务的段分布如上图所示，每个任务都只能访问 GDT 和自己的 LDT ，
+不可能访问其他任务的 LDT ，这就实现了隔离不同的用户程序。
+
+在加载 selector 时会有很多检查：
+
+1. selector 是否存在
+
+如果要加载的 selector 根本不存在与 GDT 或 LDT 中，自然是有异常。
+
+2. 类型检查
+
+每个 descriptor 除了 base 和 limit 外，还有 8 bit 的属性，
+其中段描述符的属性如下：
+
 ![段描述子访问类型](/img/segment_descriptor_access_bytes.png)
 
-特殊描述子的格式如下：
+其中第 1、2、4 bit 是比较关键的，有 *Read Only Data Segment* 、 *Read-Write Data Segment* 、
+*Execute Only Code Segment* 、 *Execute-Read Code Segment* 四种组合。
 
-![特殊描述子](/img/system_segment_descriptor_and_gate_descriptor.png)
+四个段寄存器分别可以加载不同的类型，如下表所示：
 
+![段寄存器的允许类型](/img/allowed_segment_type_in_segment_register.png)
+
+不能够加载不允许的类型到段寄存器中。
+
+3. 权限检查
+
+对 ss 寄存器，必须有 **CPL = DPL** ，其他就要 **CPL <= DPL** ，
+相一致代码段是一个例外。
+
+### 访问数据
+
+在加载完 selector 之后就要访问数据了，这里有也有一些检查
+
+4. 权限检查
+
+访问数据时也有权限检查，必须要 **min{CPL, RPL} <= DPL** 。
+
+5. 边界检查
+
+不能访问 selector 指向的内存范围之外，即 **offset <= limit**
+
+### 控制转移
 
